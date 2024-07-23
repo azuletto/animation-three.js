@@ -6,52 +6,82 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-
 const cubes = [];
 const cubeSpeed = 0.05;
 
-// Function to create and add a new cube to the scene and array
-function createCube() {
-  const height = Math.random() * (5 - 2) + 2; // Random height between 1 and 3
-  const geometry = new THREE.BoxGeometry(1, height, 0.5);
-  const material = new THREE.MeshStandardMaterial({ 
-	map: buildingTexture
-   });
+// Função para carregar textura com callbacks
+function loadTexture(path) {
+  return new Promise((resolve, reject) => {
+    new THREE.TextureLoader().load(
+      path,
+      (texture) => {
+        console.log(`Texture loaded from ${path}`);
+        resolve(texture);
+      },
+      undefined,
+      (err) => {
+        console.error(`Error loading texture from ${path}`, err);
+        reject(err);
+      }
+    );
+  });
+}
 
+// Função para criar e adicionar um novo cubo à cena e ao array
+async function createCube() {
+  const height = Math.random() * (5 - 2) + 2; // Altura aleatória entre 2 e 5
+  const geometry = new THREE.BoxGeometry(1, height, 0.5);
+  let buildingTexture;
+
+  try {
+    buildingTexture = await loadTexture('./texture.jpg');
+  } catch (err) {
+    console.error('Failed to load building texture', err);
+    return;
+  }
+
+  const material = new THREE.MeshStandardMaterial({ map: buildingTexture });
   const cube = new THREE.Mesh(geometry, material);
 
-  // Set the initial x position of the new cube relative to the previous cube
+  // Definir a posição inicial x do novo cubo em relação ao cubo anterior
   const previousCube = cubes[cubes.length - 1];
   cube.position.x = previousCube ? previousCube.position.x - 3 : -window.innerWidth / 100;
-  
-  cube.position.y = height/2 - 1.6; // Keep y position constant
-  cube.position.z = 0; // Keep it on the same z-plane
-  
+
+  cube.position.y = height / 2 - 1.6; // Manter posição y constante
+  cube.position.z = 0; // Manter no mesmo plano z
+
   cubes.push(cube);
   scene.add(cube);
   console.log('Cube created at position:', cube.position.x, cube.position.y, cube.position.z, 'with height:', height);
 }
-const buildingTexture = new THREE.TextureLoader().load('./building-texture.jpg');
-const cityTexture = new THREE.TextureLoader().load('./city-back.jpeg');
-scene.background = cityTexture;
 
-// Initially create a few cubes
+// Carregar a textura de fundo da cidade
+loadTexture('./city-back.jpeg').then((cityTexture) => {
+  scene.background = cityTexture;
+}).catch((err) => {
+  console.error('Failed to load city background texture', err);
+});
+
+// Adicionar uma luz à cena
+const light = new THREE.DirectionalLight(0xffffff, 1);
+light.position.set(1, 2, 1).normalize();
+scene.add(light);
+
+// Inicialmente criar alguns cubos
 for (let i = 0; i < 10; i++) {
   createCube();
 }
 
 camera.position.z = 5;
 
-
-
 function animate() {
   requestAnimationFrame(animate);
 
-  // Update the position of each cube
+  // Atualizar a posição de cada cubo
   cubes.forEach((cube, index) => {
-    cube.position.x += cubeSpeed; // Move horizontally
+    cube.position.x += cubeSpeed; // Mover horizontalmente
 
-    // Remove cube if it moves out of view and create a new one
+    // Remover cubo se ele sair de vista e criar um novo
     if (cube.position.x > window.innerWidth / 100) {
       scene.remove(cube);
       cubes.splice(index, 1);
