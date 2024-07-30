@@ -54,6 +54,7 @@ menos um modelo externo. Spoiler: É um avião!
 ### 🚀 Como Rodar o Projeto
 
 1. Clone este repositório.
-   ```bash
-   git clone https://github.com/seu-usuario/seu-repositorio.git
-2. Instale as dependências node seguindo: (https://threejs.org/docs/index.html#manual/en/introduction/Installation).
+```
+git clone https://github.com/seu-usuario/seu-repositorio.git
+```
+2. Instale as dependências node seguindo: https://threejs.org/docs/index.html#manual/en/introduction/Installation
