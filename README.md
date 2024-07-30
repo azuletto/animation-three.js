@@ -1,6 +1,6 @@
 
 <p align="center">
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=100&size=15&pause=1000&width=435&lines=%F0%9F%9B%AB+Projeto+de+Anima%C3%A7%C3%A3o+3D+com+WebGL+e+Three.js+%F0%9F%9B%AB)](https://git.io/typing-svg)
+<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=100&size=15&pause=1000&width=435&lines=%F0%9F%9B%AB+Projeto+de+Anima%C3%A7%C3%A3o+3D+com+WebGL+e+Three.js+%F0%9F%9B%AB" alt="Typing SVG" /></a>
 </p>
 Bem-vindo ao repositório do meu projeto de animação 3D! Aqui, você vai encontrar uma animação de um avião (sim, ele voa!) criada utilizando WebGL e a biblioteca Three.js. Prepare-se para decolar em uma jornada através das maravilhas do código e da renderização gráfica. ✈️
 
