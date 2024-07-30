@@ -5,9 +5,9 @@
 <div align="center">
 
 Bem-vindo ao repositório do meu projeto de animação 3D! Aqui, você vai encontrar uma animação de um avião (sim, ele voa!) criada utilizando WebGL e a biblioteca Three.js. Prepare-se para decolar em uma jornada através das maravilhas do código e da renderização gráfica. ✈️
-```
-💡 Por favor, leve toda e qualquer afirmação subentendida neste projeto como mera ficção e expressão humorística.
-```
+
+_💡 Por favor, leve toda e qualquer afirmação subentendida neste projeto como mera ficção e expressão humorística._
+
 ### University
 
  <a href="https://uenp.edu.br/ciencia-da-computacao"><img width="32px" alt="University" title="University" src="https://uenp.edu.br/images/institucional/logo-uenp-m.png"/></a>
