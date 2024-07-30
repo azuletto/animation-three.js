@@ -36,4 +36,4 @@ O objetivo deste projeto é criar uma animação seguindo os seguintes critério
 1. Clone este repositório.
    ```bash
    git clone https://github.com/seu-usuario/seu-repositorio.git
-2. Instale as dependências node seguindo: Esse link(https://threejs.org/docs/index.html#manual/en/introduction/Installation).
+2. Instale as dependências node seguindo: (https://threejs.org/docs/index.html#manual/en/introduction/Installation).
